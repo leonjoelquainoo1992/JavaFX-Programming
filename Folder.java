@@ -1,5 +1,5 @@
 
- *  public void addEmail(Email email): Adds an email to the folder according to the current sorting method.
+ /*  public void addEmail(Email email): Adds an email to the folder according to the current sorting method.
 ·   public Email removeEmail(int index): Removes an email from the folder by index.
 ·  	public void sortBySubjectAscending(): Sorts the emails alphabetically by subject in ascending order.
 ·   public void sortBySubjectDescending(): Sorts the emails alphabetically by subject in descending order.
