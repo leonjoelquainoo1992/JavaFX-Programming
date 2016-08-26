@@ -1,11 +1,4 @@
-/* @author leonjoel
- * JOEL QUAINOO
- * ID: 110688594
- * EMAIL: JOEL.QUAINOO@STONYBROOK.EDU
- * CSE 214 ASSIGNMENT: 5
- * SECTION: 6
- *
- */
+
 import java.io.Serializable;
 import java.util.GregorianCalendar;
 
