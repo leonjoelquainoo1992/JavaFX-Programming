@@ -1,4 +1,11 @@
-
+/* @author leonjoel
+ * JOEL QUAINOO
+ * ID: 110688594
+ * EMAIL: JOEL.QUAINOO@STONYBROOK.EDU
+ * CSE 214 ASSIGNMENT: 5
+ * SECTION: 6
+ *
+ */
 import java.util.GregorianCalendar;
 import java.util.Optional;
 
@@ -57,6 +64,7 @@ public class Main extends Application {
 
 	ObservableList<Email> inboxData = FXCollections.observableArrayList();
 	ObservableList<Email> trashData = FXCollections.observableArrayList();
+	ObservableList<Email> folderData = FXCollections.observableArrayList();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -228,9 +236,6 @@ public class Main extends Application {
 				System.out.println(val);
 			}
 
-
-
-
 			//Folders Starts
 			folderGridPane.setVgap(2);
 			window.setLeft(folderGridPane);
@@ -260,6 +265,7 @@ public class Main extends Application {
 						}
 						window.setCenter(emailView);
 						emailView.setText(folder.getName() + " added successfully.");
+						System.out.println(folders.size());
 					}
 				}
 			});
@@ -280,10 +286,10 @@ public class Main extends Application {
 						mailbox.deleteFolder(result.get());
 						for(int i = 0; i < folderGridPane.getChildren().size(); i++){
 							if(((Labeled) folderGridPane.getChildren().get(i)).getText().equalsIgnoreCase(result.get()) && !(((Labeled) folderGridPane.getChildren().get(i)).getText().equalsIgnoreCase("Inbox")) && !(((Labeled) folderGridPane.getChildren().get(i)).getText().equalsIgnoreCase("Trash"))){
-									valueY = folderGridPane.getChildren().get(i).getTranslateY();
-									folderGridPane.getChildren().remove(i);
-									folderRemoved = true;
-									emailView.setText(result.get() + " removed successfully.");
+								valueY = folderGridPane.getChildren().get(i).getTranslateY();
+								folderGridPane.getChildren().remove(i);
+								folderRemoved = true;
+								emailView.setText(result.get() + " removed successfully.");
 							}
 							else{
 								emailView.setText("Unsuccessful: \n");
@@ -331,7 +337,7 @@ public class Main extends Application {
 				public void handle(MouseEvent event){
 					TextInputDialog dialog = new TextInputDialog("");
 					dialog.setHeaderText(null);
-					dialog.setTitle("Add New Folder");
+					dialog.setTitle("Delete Email");
 					dialog.setContentText("Enter  index of mail you want to delete:");
 					Optional<String> result = dialog.showAndWait();
 					if(result.isPresent() && result.get() != null && inboxData.size() > 0){
@@ -350,7 +356,19 @@ public class Main extends Application {
 			moveEmail.setDisable(true);
 			moveEmail.setOnMousePressed(new EventHandler<MouseEvent>(){
 				public void handle(MouseEvent event){
-					//implement move email
+					TextInputDialog dialog = new TextInputDialog("");
+					dialog.setHeaderText(null);
+					dialog.setTitle("Move Email");
+					dialog.setContentText("Enter name of the FOLDER you want to move email to:");
+					Optional<String> result = dialog.showAndWait();
+					if(result.isPresent() && result.get() != null){
+						for(int i = 0; i < folders.size(); i++){
+							if(folders.get(i).getName().equalsIgnoreCase(result.get())){
+								folderData.add(mailbox.getFolder(result.get()).removeEmail(i));
+							}
+						}
+
+					}
 
 				}
 			});
@@ -373,6 +391,7 @@ public class Main extends Application {
 		button.setPrefSize(120, 20);
 		button.setTranslateX(10);
 		button.setTranslateY(value);
+		//mail
 		return button;
 	}
 
