@@ -1,7 +1,6 @@
 
 import java.util.GregorianCalendar;
 import java.util.Optional;
-
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -399,7 +398,5 @@ public class Main extends Application {
 		bcc.clear();
 		body.clear();
 	}
-
-
 }
 
