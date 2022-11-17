@@ -15,19 +15,12 @@ public class Mailbox implements Serializable {
 	}
 
 
-	/**
-	 * @return the inbox
-	 */
 	public Folder getInbox() {
 		if(inbox == null)
 			inbox = new Folder("Inbox");
 		return inbox;
 	}
 
-
-	/**
-	 * @param inbox the inbox to set
-	 */
 	public void setInbox(Folder inbox) {
 		this.inbox = inbox;
 	}
@@ -65,7 +58,6 @@ public class Mailbox implements Serializable {
 	public void setFolders(ArrayList<Folder> folders) {
 		this.folders = folders;
 	}
-
 
 	/**
 	 * @return the mailbox
@@ -158,15 +150,10 @@ public class Mailbox implements Serializable {
 		return null;	
 	}
 	
-	
 	public void getFolderNameInString(){
 		for(int i = 0; i < getFolders().size(); i++){
 			System.out.println(getFolders().get(i).getName());
 		}
 		System.out.println();
 	}
-	
-	
-	
-
 }
